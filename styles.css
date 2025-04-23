@@ -1,0 +1,99 @@
+@font-face {
+  font-display: swap;
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./assets/outfit-v11-latin-regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 700;
+  src: url('./assets/outfit-v11-latin-700.woff2') format('woff2');
+}
+
+:root {
+  --white: hsl(0, 0%, 100%);
+  --slate-300: hsl(212, 45%, 89%);
+  --slate-500: hsl(216, 15%, 48%);
+  --slate-900: hsl(218, 44%, 22%);
+
+  --space-200: 1rem;
+  --space-300: 1.5rem;
+  --space-500: 2.5rem;
+}
+
+.container {
+  position: fixed;
+  inset: 0;
+  background-color: var(--slate-300);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.container-a {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+}
+
+.container-b {
+  padding: 1rem 0;
+}
+
+.card {
+  background-color: var(--white);
+  text-align: center;
+  padding: var(--space-200) var(--space-200) var(--space-500);
+  width: 18rem;
+  border-radius: 1.25rem;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, .1);
+}
+
+.card__qr-image {
+  width: 100%;
+  height: auto;
+  border-radius: .625rem;
+  margin-bottom: var(--space-300);
+}
+
+.card__text {
+  font-family: "Outfit", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  color: var(--slate-500);
+  font-size: 15px;
+  line-height: 1.4;
+  letter-spacing: .2px;
+  padding: 0 var(--space-200);
+  margin: 0 0 var(--space-300);
+}
+
+.card__text:last-child {
+  margin: 0;
+}
+
+.card__text.card__text--lead {
+  font-weight: 700;
+  color: var(--slate-900);
+  font-size: 22px;
+  line-height: 1.2;
+  letter-spacing: 0;
+  margin: 0 0 var(--space-200);
+}
+
+.attribution {
+  font-size: 11px;
+  font-family: "Outfit", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  color: var(--slate-900);
+}
+
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
