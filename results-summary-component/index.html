@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./styles.css">
+  <title>Frontend Mentor | Results summary component</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <script>
+    const results = [
+      {
+        "category": "Reaction",
+        "score": 80,
+        "icon": "./assets/images/icon-reaction.svg"
+      },
+      {
+        "category": "Memory",
+        "score": 92,
+        "icon": "./assets/images/icon-memory.svg"
+      },
+      {
+        "category": "Verbal",
+        "score": 61,
+        "icon": "./assets/images/icon-verbal.svg"
+      },
+      {
+        "category": "Visual",
+        "score": 72,
+        "icon": "./assets/images/icon-visual.svg"
+      }
+    ]
+  </script>
+</head>
+<body>
+  <main>
+    <div id="component">
+      <div class="result">
+        <div class="result-title">Your Result</div>
+        <svg
+          viewBox="0 0 100 100"
+          xmlns="http://www.w3.org/2000/svg"
+          class="result-score"
+        >
+          <linearGradient id="grad1" x1="0%" x2="0%" y1="0%" y2="100%">
+            <stop offset="0%" stop-color="#4E21CAff" />
+            <stop offset="100%" stop-color="#2421CA00" />
+          </linearGradient>
+          <circle
+            cx="50" cy="50" r="50"
+            fill="url(#grad1)"
+            class="result-score-circle"
+          />
+          <text text-anchor="middle" x="50" y="45" id="result-score-total">
+            00
+          </text>
+          <text text-anchor="middle" x="50" y="70" class="result-score-outof">
+            of 100
+          </text>
+        </svg>
+        <div>
+          <div class="result-word">Great</div>
+          <div class="result-explainer">
+            You scored higher than 65% of the people who have taken these tests.
+          </div>
+        </div>
+      </div>
+
+      <div id="summary">
+        <div class="summary-title">Summary</div>
+        <div id="summary-items"></div>
+        <button class="summary-continue">Continue</button>
+      </div>
+    </div>
+  </main>
+  <script>
+  let totalScore = 0;
+  const summaryArea = document.getElementById('summary-items');
+
+  results.forEach((item) => {
+    const newElement = document.createElement('div');
+    newElement.classList.add('summary-item', `summary-item--${item.category.toLowerCase()}`);
+
+    const categoryDiv = document.createElement('div');
+    categoryDiv.classList.add('summary-title-container');
+
+    const iconImage = document.createElement('img');
+    iconImage.src = item.icon;
+    iconImage.alt = `${item.category} icon`;
+    iconImage.classList.add('summary-icon');
+
+    categoryDiv.appendChild(iconImage);
+
+    categoryDiv.appendChild(document.createTextNode(item.category));
+
+    const scoreDiv = document.createElement('div');
+    scoreDiv.classList.add('summary-item-score');
+    scoreDiv.textContent = item.score;
+
+    newElement.appendChild(categoryDiv);
+    newElement.appendChild(scoreDiv);
+
+    summaryArea.appendChild(newElement);
+    totalScore += item.score;
+  });
+  
+  const rst = document.getElementById('result-score-total');
+  rst.innerHTML = Math.floor(totalScore / results.length);
+  </script>
+</body>
+</html>
